@@ -1,7 +1,7 @@
-data "vultr_snapshot" "astra_node" {
+data "vultr_snapshot" "astra_flight" {
   filter {
     name   = "description"
-    values = ["astra-node-${var.astra_image_version}"]
+    values = ["astra-flight-${var.astra_image_version}"]
   }
 }
 
@@ -13,7 +13,7 @@ resource "vultr_instance" "astra_flight" {
   count       = var.flight_count
   plan        = var.machine_type
   region      = var.region
-  snapshot_id = data.vultr_snapshot.astra_node.id
+  snapshot_id = data.vultr_snapshot.astra_flight.id
   label       = "astra-flight-${count.index}"
   hostname    = "astra-flight-${count.index}"
 

@@ -1,8 +1,3 @@
-terraform {
-  required_providers {
-    vultr = {
-      source = "vultr/vultr"
-      version = "2.1.2"
-    }
-  }
+output flight_ip_addresses {
+  value = vultr_instance.astra_flight.*.main_ip
 }
